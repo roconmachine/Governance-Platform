@@ -4,7 +4,7 @@ import com.microsoft.aad.msal4j.ClientCredentialParameters;
 import com.microsoft.aad.msal4j.IAuthenticationResult;
 import com.microsoft.aad.msal4j.IConfidentialClientApplication;
 import com.microsoft.aad.msal4j.OnBehalfOfParameters;
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.exchange.cache.TokenCacheManager;
 import com.platform.security.exchange.config.ExchangeAuthProperties;
 import com.platform.security.exchange.exception.TokenAcquisitionException;

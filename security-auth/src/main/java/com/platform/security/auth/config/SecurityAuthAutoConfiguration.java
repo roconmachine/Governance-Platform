@@ -1,7 +1,7 @@
 package com.platform.security.auth.config;
 
-import com.platform.governance.core.config.GovernanceCoreAutoConfiguration;
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreAutoConfiguration;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint;
 import com.platform.security.auth.filter.JwtAuthenticationFilter;
 import com.platform.security.auth.jwt.JwtTokenValidator;

@@ -1,6 +1,6 @@
 package com.platform.security.rbac.aspect;
 
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.rbac.annotation.RequiresPermission;
 import com.platform.security.rbac.annotation.RequiresRole;
 import com.platform.security.rbac.resolver.PermissionResolver;

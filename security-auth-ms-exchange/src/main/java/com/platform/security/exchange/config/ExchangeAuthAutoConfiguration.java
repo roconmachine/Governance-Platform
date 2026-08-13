@@ -1,8 +1,8 @@
 package com.platform.security.exchange.config;
 
 import com.microsoft.aad.msal4j.IConfidentialClientApplication;
-import com.platform.governance.core.config.GovernanceCoreAutoConfiguration;
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreAutoConfiguration;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.exchange.cache.TokenCacheManager;
 import com.platform.security.exchange.client.ConfidentialClientFactory;
 import com.platform.security.exchange.endpoint.ExchangeAuthInfoEndpoint;

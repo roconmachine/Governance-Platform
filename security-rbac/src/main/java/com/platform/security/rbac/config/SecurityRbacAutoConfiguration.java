@@ -1,7 +1,7 @@
 package com.platform.security.rbac.config;
 
-import com.platform.governance.core.config.GovernanceCoreAutoConfiguration;
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreAutoConfiguration;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.rbac.aspect.RbacEnforcementAspect;
 import com.platform.security.rbac.endpoint.SecurityRbacInfoEndpoint;
 import com.platform.security.rbac.resolver.PermissionResolver;

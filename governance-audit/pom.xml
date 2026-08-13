@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.platform.governance</groupId>
+    <groupId>com.roconmachine</groupId>
     <artifactId>governance-audit</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>

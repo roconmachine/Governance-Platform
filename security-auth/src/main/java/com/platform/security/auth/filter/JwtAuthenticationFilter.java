@@ -1,6 +1,6 @@
 package com.platform.security.auth.filter;
 
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.auth.config.SecurityAuthProperties;
 import com.platform.security.auth.model.AuthenticatedPrincipal;
 import com.platform.security.auth.jwt.TokenValidationException;

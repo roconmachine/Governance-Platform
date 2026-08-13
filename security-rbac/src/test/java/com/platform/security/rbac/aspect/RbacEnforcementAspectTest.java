@@ -1,6 +1,6 @@
 package com.platform.security.rbac.aspect;
 
-import com.platform.governance.core.config.GovernanceCoreProperties;
+import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.platform.security.rbac.config.SecurityRbacProperties;
 import com.platform.security.rbac.fixtures.SampleService;
 import com.platform.security.rbac.resolver.PermissionResolver;
