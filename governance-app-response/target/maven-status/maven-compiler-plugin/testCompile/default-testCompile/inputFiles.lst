@@ -1,7 +1,0 @@
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\config\ApplicationResponsePropertiesValidatorTest.java
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\exception\BaseAppExceptionTest.java
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\handler\GlobalAppExceptionHandlerTest.java
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\handler\SecurityAccessDeniedExceptionHandlerTest.java
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\model\AppResponseFactoryTest.java
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\trace\MdcTraceIdProviderTest.java
-E:\source\governance\governance-platform\governance-app-response\src\test\java\com\platform\governance\response\trace\MicrometerTraceIdProviderTest.java

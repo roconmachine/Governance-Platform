@@ -1,4 +1,0 @@
-/workspaces/Governance-Platform/security-crypto/src/test/java/com/platform/security/crypto/engine/AesGcmEncryptionServiceTest.java
-/workspaces/Governance-Platform/security-crypto/src/test/java/com/platform/security/crypto/engine/EnvKeyProviderTest.java
-/workspaces/Governance-Platform/security-crypto/src/test/java/com/platform/security/crypto/web/EncryptedApiRequestDecryptionFilterTest.java
-/workspaces/Governance-Platform/security-crypto/src/test/java/com/platform/security/crypto/web/EncryptedApiResponseBodyAdviceTest.java

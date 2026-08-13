@@ -1,3 +1,0 @@
-/workspaces/Governance-Platform/governance-audit/src/test/java/com/roconmachine/governance/audit/archunit/GovernanceArchitectureTest.java
-/workspaces/Governance-Platform/governance-audit/src/test/java/com/roconmachine/governance/audit/aspect/AuditLoggingAspectTest.java
-/workspaces/Governance-Platform/governance-audit/src/test/java/com/roconmachine/governance/audit/aspect/fixtures/SampleAuditedService.java

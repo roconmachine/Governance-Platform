@@ -1,9 +1,0 @@
-com\platform\security\rbac\config\SecurityRbacAutoConfiguration.class
-com\platform\security\rbac\annotation\RequiresRole.class
-com\platform\security\rbac\resolver\PermissionResolver.class
-com\platform\security\rbac\aspect\RbacEnforcementAspect.class
-com\platform\security\rbac\config\SecurityRbacProperties.class
-com\platform\security\rbac\annotation\RequiresPermission.class
-META-INF\spring-configuration-metadata.json
-com\platform\security\rbac\endpoint\SecurityRbacInfoEndpoint.class
-com\platform\security\rbac\resolver\PropertiesPermissionResolver.class
