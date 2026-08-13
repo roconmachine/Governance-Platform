@@ -1,3 +1,3 @@
-E:\source\governance\governance-platform\governance-audit\src\test\java\com\platform\governance\audit\archunit\GovernanceArchitectureTest.java
-E:\source\governance\governance-platform\governance-audit\src\test\java\com\platform\governance\audit\aspect\AuditLoggingAspectTest.java
-E:\source\governance\governance-platform\governance-audit\src\test\java\com\platform\governance\audit\aspect\fixtures\SampleAuditedService.java
+/workspaces/Governance-Platform/governance-audit/src/test/java/com/roconmachine/governance/audit/archunit/GovernanceArchitectureTest.java
+/workspaces/Governance-Platform/governance-audit/src/test/java/com/roconmachine/governance/audit/aspect/AuditLoggingAspectTest.java
+/workspaces/Governance-Platform/governance-audit/src/test/java/com/roconmachine/governance/audit/aspect/fixtures/SampleAuditedService.java

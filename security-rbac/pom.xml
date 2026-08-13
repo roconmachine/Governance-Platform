@@ -41,7 +41,7 @@
              correlation id (for denial-log context), the same lightweight integration
              pattern used by every other module in this suite. -->
         <dependency>
-            <groupId>com.platform.governance</groupId>
+            <groupId>com.roconmachine</groupId>
             <artifactId>governance-core</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>

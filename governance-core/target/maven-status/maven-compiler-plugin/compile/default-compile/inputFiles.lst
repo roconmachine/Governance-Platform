@@ -1,7 +1,7 @@
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\annotation\Sensitive.java
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\async\MdcTaskDecorator.java
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\config\GovernanceCoreAutoConfiguration.java
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\config\GovernanceCoreProperties.java
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\correlation\CorrelationIdFilter.java
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\endpoint\GovernanceInfoEndpoint.java
-E:\source\governance\governance-platform\governance-core\src\main\java\com\platform\governance\core\masking\SensitiveDataMasker.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/annotation/Sensitive.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/async/MdcTaskDecorator.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/config/GovernanceCoreAutoConfiguration.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/config/GovernanceCoreProperties.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/correlation/CorrelationIdFilter.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/endpoint/GovernanceInfoEndpoint.java
+/workspaces/Governance-Platform/governance-core/src/main/java/com/roconmachine/governance/core/masking/SensitiveDataMasker.java

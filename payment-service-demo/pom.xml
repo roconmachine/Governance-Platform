@@ -42,20 +42,20 @@
         <!-- governance-core comes in transitively via every module below -->
 
         <dependency>
-            <groupId>com.platform.governance</groupId>
+            <groupId>com.roconmachine</groupId>
             <artifactId>governance-audit</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.platform.governance</groupId>
+            <groupId>com.roconmachine</groupId>
             <artifactId>governance-http-logging</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- Chosen over governance-exception-handling - see class-level Javadoc above -->
         <dependency>
-            <groupId>com.platform.governance</groupId>
+            <groupId>com.roconmachine</groupId>
             <artifactId>governance-app-response</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
