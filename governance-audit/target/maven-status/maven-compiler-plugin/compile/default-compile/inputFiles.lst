@@ -1,0 +1,9 @@
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\annotation\Auditable.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\aspect\AuditLoggingAspect.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\config\GovernanceAuditAutoConfiguration.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\config\GovernanceAuditProperties.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\endpoint\GovernanceAuditInfoEndpoint.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\model\AuditEvent.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\publisher\AuditEventPublisher.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\publisher\LoggingAuditEventPublisher.java
+E:\source\governance\governance-platform\governance-audit\src\main\java\com\platform\governance\audit\publisher\NoopAuditEventPublisher.java

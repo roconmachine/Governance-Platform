@@ -1,0 +1,5 @@
+# Created at 2026-08-03T14:01:12.450
+Boot Manifest-JAR contains absolute paths in classpath 'E:\source\governance\governance-platform\security-rbac\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

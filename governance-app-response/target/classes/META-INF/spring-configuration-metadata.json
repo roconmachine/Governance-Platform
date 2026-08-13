@@ -1,0 +1,73 @@
+{
+  "groups": [
+    {
+      "name": "application.response",
+      "type": "com.platform.governance.response.config.ApplicationResponseProperties",
+      "sourceType": "com.platform.governance.response.config.ApplicationResponseProperties"
+    },
+    {
+      "name": "management.endpoint.app-response",
+      "type": "com.platform.governance.response.endpoint.ApplicationResponseInfoEndpoint",
+      "sourceType": "com.platform.governance.response.endpoint.ApplicationResponseInfoEndpoint"
+    }
+  ],
+  "properties": [
+    {
+      "name": "application.response.default-system-event-code",
+      "type": "java.lang.String",
+      "description": "The 4-digit event code used when an unhandled (non-BaseAppException) exception is caught - see GlobalAppExceptionHandler.",
+      "sourceType": "com.platform.governance.response.config.ApplicationResponseProperties",
+      "defaultValue": "9999"
+    },
+    {
+      "name": "application.response.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Master switch. Defaults to true.",
+      "sourceType": "com.platform.governance.response.config.ApplicationResponseProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "application.response.service-id",
+      "type": "java.lang.String",
+      "description": "Exactly 3 alphanumeric characters identifying this service in every appCode it produces (e.g. \"PAY\", \"ORD\", \"101\"). Required - validated at startup by ApplicationResponsePropertiesValidator; there is no sensible default, since a made-up default would silently produce appCodes attributed to the wrong service.",
+      "sourceType": "com.platform.governance.response.config.ApplicationResponseProperties"
+    },
+    {
+      "name": "application.response.success-event-code",
+      "type": "java.lang.String",
+      "description": "The 4-digit event code used for the \"I\" (informational\/success) appCode segment, e.g. \"PAY-I-0000\".",
+      "sourceType": "com.platform.governance.response.config.ApplicationResponseProperties",
+      "defaultValue": "0000"
+    },
+    {
+      "name": "management.endpoint.app-response.access",
+      "type": "org.springframework.boot.actuate.endpoint.Access",
+      "description": "Permitted level of access for the appResponse endpoint.",
+      "sourceType": "com.platform.governance.response.endpoint.ApplicationResponseInfoEndpoint",
+      "defaultValue": "unrestricted"
+    },
+    {
+      "name": "management.endpoint.app-response.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "com.platform.governance.response.endpoint.ApplicationResponseInfoEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.app-response.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the appResponse endpoint.",
+      "sourceType": "com.platform.governance.response.endpoint.ApplicationResponseInfoEndpoint",
+      "defaultValue": true,
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "management.endpoint.app-response.access",
+        "since": "3.4.0"
+      }
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

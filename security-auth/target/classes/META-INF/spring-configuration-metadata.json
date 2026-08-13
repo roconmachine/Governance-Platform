@@ -1,0 +1,106 @@
+{
+  "groups": [
+    {
+      "name": "management.endpoint.security-auth",
+      "type": "com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint",
+      "sourceType": "com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint"
+    },
+    {
+      "name": "security.auth",
+      "type": "com.platform.security.auth.config.SecurityAuthProperties",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "management.endpoint.security-auth.access",
+      "type": "org.springframework.boot.actuate.endpoint.Access",
+      "description": "Permitted level of access for the securityAuth endpoint.",
+      "sourceType": "com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint",
+      "defaultValue": "unrestricted"
+    },
+    {
+      "name": "management.endpoint.security-auth.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "security.auth.audience",
+      "type": "java.lang.String",
+      "description": "Expected audience (`aud` claim). Left blank to skip audience validation.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties"
+    },
+    {
+      "name": "security.auth.clock-skew-seconds",
+      "type": "java.lang.Long",
+      "description": "Allowed clock skew, in seconds, when checking expiry\/not-before.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties",
+      "defaultValue": 30
+    },
+    {
+      "name": "security.auth.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Master switch. Defaults to true.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "security.auth.header-name",
+      "type": "java.lang.String",
+      "description": "HTTP header the token is read from.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties",
+      "defaultValue": "Authorization"
+    },
+    {
+      "name": "security.auth.header-prefix",
+      "type": "java.lang.String",
+      "description": "Prefix stripped from the header value before parsing, e.g. \"Bearer \".",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties",
+      "defaultValue": "Bearer "
+    },
+    {
+      "name": "security.auth.hmac-secret",
+      "type": "java.lang.String",
+      "description": "HMAC shared secret (base64), for HS256\/384\/512. Set this OR publicKey\/jwks-uri, not both - HMAC is the simple zero-infra default for a single-issuer internal platform; prefer an asymmetric key or a JWKS endpoint when tokens are issued by a separate identity provider, since HMAC requires sharing the same secret with whatever issues tokens.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties"
+    },
+    {
+      "name": "security.auth.issuer",
+      "type": "java.lang.String",
+      "description": "Expected issuer (`iss` claim). Tokens from any other issuer are rejected.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties"
+    },
+    {
+      "name": "security.auth.reject-invalid-token",
+      "type": "java.lang.Boolean",
+      "description": "If a token is present but fails validation, respond 401 immediately (true) rather than letting the request proceed unauthenticated (false). A MISSING token always proceeds unauthenticated either way - this only governs the \"token present but invalid\" case, so public endpoints on the same service are unaffected.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "security.auth.roles-claim",
+      "type": "java.lang.String",
+      "description": "Claim name holding the caller's roles - expected to be a list\/array of strings.",
+      "sourceType": "com.platform.security.auth.config.SecurityAuthProperties",
+      "defaultValue": "roles"
+    },
+    {
+      "name": "management.endpoint.security-auth.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the securityAuth endpoint.",
+      "sourceType": "com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint",
+      "defaultValue": true,
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "management.endpoint.security-auth.access",
+        "since": "3.4.0"
+      }
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

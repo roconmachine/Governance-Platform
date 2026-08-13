@@ -1,0 +1,4 @@
+com\platform\governance\archunit\rules\GovernanceLayeringRules.class
+com\platform\governance\archunit\rules\GovernanceAnnotationRules.class
+com\platform\governance\archunit\rules\GovernanceCodeHygieneRules.class
+com\platform\governance\archunit\rules\GovernanceNamingConventionRules.class

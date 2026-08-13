@@ -1,0 +1,8 @@
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\annotation\RequiresPermission.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\annotation\RequiresRole.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\aspect\RbacEnforcementAspect.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\config\SecurityRbacAutoConfiguration.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\config\SecurityRbacProperties.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\endpoint\SecurityRbacInfoEndpoint.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\resolver\PermissionResolver.java
+E:\source\governance\governance-platform\security-rbac\src\main\java\com\platform\security\rbac\resolver\PropertiesPermissionResolver.java

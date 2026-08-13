@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.platform.governance</groupId>
+    <artifactId>governance-platform</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Governance Platform (reactor)</name>
+    <description>
+        Aggregator for the governance-as-code module suite. Each module is an
+        independent, publishable Spring Boot starter - this POM only exists so
+        `mvn clean install` builds them in the right order in one command
+        during local development.
+    </description>
+
+    <modules>
+        <module>governance-core</module>
+        <module>governance-audit</module>
+        <module>governance-http-logging</module>
+<!--        <module>governance-archunit</module>-->
+        <module>governance-exception-handling</module>
+<!--        <module>governance-app-response</module>-->
+        <module>security-crypto</module>
+<!--        <module>security-auth</module>-->
+<!--        <module>security-rbac</module>-->
+<!--        <module>security-auth-ms-exchange</module>-->
+    </modules>
+
+</project>

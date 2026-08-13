@@ -1,0 +1,9 @@
+com\platform\governance\httplog\config\GovernanceHttpLoggingProperties.class
+com\platform\governance\httplog\config\GovernanceHttpLoggingProperties$Async.class
+com\platform\governance\httplog\publisher\LoggingHttpAccessLogPublisher.class
+com\platform\governance\httplog\publisher\HttpAccessLogPublisher.class
+com\platform\governance\httplog\endpoint\GovernanceHttpLoggingInfoEndpoint.class
+com\platform\governance\httplog\model\HttpAccessLogEvent.class
+META-INF\spring-configuration-metadata.json
+com\platform\governance\httplog\config\GovernanceHttpLoggingAutoConfiguration.class
+com\platform\governance\httplog\filter\HttpLoggingFilter.class

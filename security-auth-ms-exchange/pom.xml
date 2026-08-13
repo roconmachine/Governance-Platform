@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.16</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.platform.security</groupId>
+    <artifactId>security-auth-ms-exchange</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>security-auth-ms-exchange</name>
+    <description>Spring Boot starter library for MS Exchange / Entra ID OAuth2 authentication</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <msal4j.version>1.16.1</msal4j.version>
+        <nimbus-jose-jwt.version>9.37.3</nimbus-jose-jwt.version>
+        <caffeine.version>3.1.8</caffeine.version>
+    </properties>
+
+    <dependencies>
+        <!-- Small, consistent with every other module in this suite: correlation-id-tagged
+             error logging via governance-core's MDC keys. Not required for this module's
+             core function, but free once present, and keeps error diagnostics traceable
+             the same way across the whole platform. -->
+        <dependency>
+            <groupId>com.platform.governance</groupId>
+            <artifactId>governance-core</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Official Microsoft Authentication Library for Java - token acquisition
+             (Client Credentials and On-Behalf-Of flows) against Entra ID. Non-optional:
+             this IS the module's purpose, not an incidental integration. -->
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>msal4j</artifactId>
+            <version>${msal4j.version}</version>
+        </dependency>
+
+        <!-- Token caching with per-entry variable expiry tied to each token's actual
+             expiresOn time (see TokenCacheManager) - a fixed-TTL cache abstraction
+             (e.g. Spring's @Cacheable with a static TTL) can't express that correctly. -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+
+        <!-- JWT signature/claims validation for validateToken() against Entra's published
+             JWKS - MSAL4J only acquires tokens, it doesn't validate arbitrary ones. -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>${nimbus-jose-jwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>4.2.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

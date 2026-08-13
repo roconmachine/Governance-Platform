@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.16</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.platform.governance</groupId>
+    <artifactId>governance-app-response</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Governance :: App Response</name>
+    <description>
+        Standardizes application-level response/exception codes across
+        microservices as ServiceID-Type-EventCode (e.g. PAY-B-0001) plus a
+        universal AppResponse&lt;T&gt; envelope for both success and error
+        responses.
+
+        IMPORTANT - overlaps with governance-exception-handling: both are
+        global @RestControllerAdvice handlers solving the same underlying
+        problem (a consistent error response shape) with different, mutually
+        incompatible opinions (AppResponse&lt;T&gt; + ServiceID-Type-EventCode
+        here, vs. ErrorResponse + free-form errorCode strings there). Do NOT
+        depend on both in the same service - two advice beans both claiming
+        Exception.class risks Spring's "Ambiguous @ExceptionHandler method
+        mapped" failure at runtime. Pick one as your platform standard. See
+        this module's README for the full comparison.
+    </description>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.platform.governance</groupId>
+            <artifactId>governance-core</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Non-optional: the global handler is a @RestControllerAdvice, meaningless without Spring MVC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Optional: only used to map AccessDeniedException (e.g. from security-rbac)
+             to 403 when Spring Security happens to be present - isolated in its own
+             class, see SecurityAccessDeniedExceptionHandler's Javadoc. Without this,
+             an AccessDeniedException would fall through to the generic Exception
+             handler and incorrectly return 500 instead of 403. -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Optional: only used to resolve traceId from an active span when
+             distributed tracing is present. Isolated in its own class
+             (MicrometerTraceIdProvider), gated by @ConditionalOnClass - a
+             service with no tracing at all still gets traceId from
+             governance-core's correlation-id MDC key instead. -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

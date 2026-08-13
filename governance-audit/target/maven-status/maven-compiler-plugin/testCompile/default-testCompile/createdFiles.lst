@@ -1,0 +1,3 @@
+com\platform\governance\audit\archunit\GovernanceArchitectureTest.class
+com\platform\governance\audit\aspect\AuditLoggingAspectTest.class
+com\platform\governance\audit\aspect\fixtures\SampleAuditedService.class

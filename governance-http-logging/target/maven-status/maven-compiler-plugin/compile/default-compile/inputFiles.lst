@@ -1,0 +1,7 @@
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\config\GovernanceHttpLoggingAutoConfiguration.java
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\config\GovernanceHttpLoggingProperties.java
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\endpoint\GovernanceHttpLoggingInfoEndpoint.java
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\filter\HttpLoggingFilter.java
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\model\HttpAccessLogEvent.java
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\publisher\HttpAccessLogPublisher.java
+E:\source\governance\governance-platform\governance-http-logging\src\main\java\com\platform\governance\httplog\publisher\LoggingHttpAccessLogPublisher.java

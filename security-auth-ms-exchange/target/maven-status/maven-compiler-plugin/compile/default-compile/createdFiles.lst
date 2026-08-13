@@ -1,0 +1,16 @@
+com\platform\security\exchange\endpoint\ExchangeAuthInfoEndpoint.class
+com\platform\security\exchange\exception\TokenAcquisitionException.class
+com\platform\security\exchange\config\ExchangeAuthProperties.class
+com\platform\security\exchange\config\ExchangeAuthProperties$Validation.class
+com\platform\security\exchange\service\ExchangeAuthProvider.class
+com\platform\security\exchange\exception\ExchangeAuthException.class
+com\platform\security\exchange\validation\EntraTokenValidator.class
+META-INF\spring-configuration-metadata.json
+com\platform\security\exchange\config\ExchangeAuthProperties$Cache.class
+com\platform\security\exchange\config\ExchangeAuthProperties$Certificate.class
+com\platform\security\exchange\cache\TokenCacheManager.class
+com\platform\security\exchange\cache\TokenCacheManager$CachedToken.class
+com\platform\security\exchange\config\ExchangeAuthAutoConfiguration.class
+com\platform\security\exchange\client\ConfidentialClientFactory.class
+com\platform\security\exchange\service\DefaultExchangeAuthProvider.class
+com\platform\security\exchange\cache\TokenCacheManager$PerTokenExpiry.class

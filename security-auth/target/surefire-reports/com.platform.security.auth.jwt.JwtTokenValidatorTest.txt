@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.platform.security.auth.jwt.JwtTokenValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.389 s -- in com.platform.security.auth.jwt.JwtTokenValidatorTest

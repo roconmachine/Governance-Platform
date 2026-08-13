@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.16</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.platform.security</groupId>
+    <artifactId>security-crypto</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>Security :: Crypto</name>
+    <description>
+        Encryption at the data level in @Entity, http payload, and response body is made possible by the library.
+    </description>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Optional: only needed if a service actually uses EncryptedStringConverter
+             on a JPA entity. Services that only call EncryptionService directly
+             (e.g. encrypting a value before putting it on a message queue)
+             don't need JPA at all. -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Optional: only needed for @EncryptedAPI (whole-payload request/response
+             encryption), which requires Servlet Filter, ResponseBodyAdvice, and
+             RequestMappingHandlerMapping - all from Spring MVC. A service using only
+             the base EncryptionService/KeyProvider/JPA converter doesn't need this at
+             all. The @EncryptedAPI-specific classes are isolated and only registered
+             when this is confirmed present AND the app is a web application - see
+             SecurityCryptoAutoConfiguration. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

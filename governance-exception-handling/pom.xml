@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.16</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.platform.governance</groupId>
+    <artifactId>governance-exception-handling</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Governance :: Exception Handling</name>
+    <description>
+        A single @RestControllerAdvice every service inherits: consistent
+        error envelope for business exceptions, Bean Validation failures,
+        malformed requests, and unhandled exceptions - never leaking a raw
+        stack trace to a caller - plus asynchronous exception logging so a
+        slow log sink (network I/O, a remote aggregator) never adds latency
+        to the error response itself.
+
+        Depends on spring-boot-starter-web directly and non-optionally:
+        global exception handling for REST controllers only means anything
+        in a Spring MVC application, unlike the incidental dependencies this
+        suite isolates elsewhere. The one genuinely optional integration -
+        mapping Spring Security's AccessDeniedException to 403 - IS isolated
+        via @ConditionalOnClass, since a service using this module has no
+        obligation to have spring-security-core on its classpath at all.
+    </description>
+
+    <properties>
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.platform.governance</groupId>
+            <artifactId>governance-core</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Non-optional: @RestControllerAdvice for REST controllers only means
+             anything in a Spring MVC application - this is this module's whole job. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Optional: only used to map AccessDeniedException to 403 when
+             Spring Security happens to be present - isolated in its own class,
+             see SecurityAccessDeniedExceptionHandler's Javadoc. -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
