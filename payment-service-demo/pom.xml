@@ -36,6 +36,13 @@
         <java.version>21</java.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/roconmachine</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- ===================== governance-platform ===================== -->
 
