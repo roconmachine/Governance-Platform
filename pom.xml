@@ -37,7 +37,7 @@
         <module>governance-exception-handling</module>
 <!--        <module>governance-app-response</module>-->
         <module>security-crypto</module>
-<!--        <module>security-auth</module>-->
+       <module>security-auth</module>
 <!--        <module>security-rbac</module>-->
 <!--        <module>security-auth-ms-exchange</module>-->
     </modules>
