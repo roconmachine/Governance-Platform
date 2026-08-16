@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-core</artifactId>
-            <version>0.1.0</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Core autoconfigure machinery -->
@@ -80,7 +80,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/roconmachine</url>
+            <url>https://maven.pkg.github.com/roconmachine/Governance-Platform</url>
         </repository>
     </distributionManagement>
 

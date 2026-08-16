@@ -13,7 +13,7 @@
 
     <groupId>com.roconmachine</groupId>
     <artifactId>demo-test-app</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>demo-test-app</name>
     <description>
@@ -57,14 +57,14 @@
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-http-logging</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Chosen over governance-exception-handling - see class-level Javadoc above -->
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-app-response</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
 
@@ -80,13 +80,13 @@
         <dependency>
             <groupId>com.platform.security</groupId>
             <artifactId>security-auth</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.platform.security</groupId>
             <artifactId>security-rbac</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>

@@ -1,7 +1,0 @@
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/config/GovernanceHttpLoggingAutoConfiguration.java
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/config/GovernanceHttpLoggingProperties.java
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/endpoint/GovernanceHttpLoggingInfoEndpoint.java
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/filter/HttpLoggingFilter.java
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/model/HttpAccessLogEvent.java
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/publisher/HttpAccessLogPublisher.java
-/workspaces/Governance-Platform/governance-http-logging/src/main/java/com/roconmachine/governance/httplog/publisher/LoggingHttpAccessLogPublisher.java
