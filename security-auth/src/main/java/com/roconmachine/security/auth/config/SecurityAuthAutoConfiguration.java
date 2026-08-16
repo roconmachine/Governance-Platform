@@ -1,11 +1,11 @@
-package com.platform.security.auth.config;
+package com.roconmachine.security.auth.config;
 
 import com.roconmachine.governance.core.config.GovernanceCoreAutoConfiguration;
 import com.roconmachine.governance.core.config.GovernanceCoreProperties;
-import com.platform.security.auth.endpoint.SecurityAuthInfoEndpoint;
-import com.platform.security.auth.filter.JwtAuthenticationFilter;
-import com.platform.security.auth.jwt.JwtTokenValidator;
-import com.platform.security.auth.jwt.TokenValidator;
+import com.roconmachine.security.auth.endpoint.SecurityAuthInfoEndpoint;
+import com.roconmachine.security.auth.filter.JwtAuthenticationFilter;
+import com.roconmachine.security.auth.jwt.JwtTokenValidator;
+import com.roconmachine.security.auth.jwt.TokenValidator;
 import jakarta.servlet.Filter;
 import org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;

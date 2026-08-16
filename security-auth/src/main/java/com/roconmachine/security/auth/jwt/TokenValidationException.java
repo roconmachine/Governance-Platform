@@ -1,4 +1,4 @@
-package com.platform.security.auth.jwt;
+package com.roconmachine.security.auth.jwt;
 
 /**
  * Raised for any token validation failure - expired, malformed, bad

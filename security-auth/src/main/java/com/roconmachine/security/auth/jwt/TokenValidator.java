@@ -1,6 +1,6 @@
-package com.platform.security.auth.jwt;
+package com.roconmachine.security.auth.jwt;
 
-import com.platform.security.auth.model.AuthenticatedPrincipal;
+import com.roconmachine.security.auth.model.AuthenticatedPrincipal;
 
 /**
  * The extension point: ships with {@link JwtTokenValidator} (signed JWTs),

@@ -1,7 +1,7 @@
-package com.platform.security.auth.jwt;
+package com.roconmachine.security.auth.jwt;
 
-import com.platform.security.auth.config.SecurityAuthProperties;
-import com.platform.security.auth.model.AuthenticatedPrincipal;
+import com.roconmachine.security.auth.config.SecurityAuthProperties;
+import com.roconmachine.security.auth.model.AuthenticatedPrincipal;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.Test;
 

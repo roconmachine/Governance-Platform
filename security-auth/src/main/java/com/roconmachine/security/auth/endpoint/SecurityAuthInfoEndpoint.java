@@ -1,6 +1,6 @@
-package com.platform.security.auth.endpoint;
+package com.roconmachine.security.auth.endpoint;
 
-import com.platform.security.auth.config.SecurityAuthProperties;
+import com.roconmachine.security.auth.config.SecurityAuthProperties;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 

@@ -1,4 +1,4 @@
-package com.platform.security.auth.model;
+package com.roconmachine.security.auth.model;
 
 import java.util.Collections;
 import java.util.Map;

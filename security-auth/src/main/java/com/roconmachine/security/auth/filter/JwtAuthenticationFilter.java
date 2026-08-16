@@ -1,10 +1,10 @@
-package com.platform.security.auth.filter;
+package com.roconmachine.security.auth.filter;
 
 import com.roconmachine.governance.core.config.GovernanceCoreProperties;
-import com.platform.security.auth.config.SecurityAuthProperties;
-import com.platform.security.auth.model.AuthenticatedPrincipal;
-import com.platform.security.auth.jwt.TokenValidationException;
-import com.platform.security.auth.jwt.TokenValidator;
+import com.roconmachine.security.auth.config.SecurityAuthProperties;
+import com.roconmachine.security.auth.model.AuthenticatedPrincipal;
+import com.roconmachine.security.auth.jwt.TokenValidationException;
+import com.roconmachine.security.auth.jwt.TokenValidator;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

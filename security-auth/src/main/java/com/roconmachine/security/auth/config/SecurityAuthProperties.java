@@ -1,4 +1,4 @@
-package com.platform.security.auth.config;
+package com.roconmachine.security.auth.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
