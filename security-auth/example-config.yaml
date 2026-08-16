@@ -1,0 +1,116 @@
+# Example configurations for security-auth with asymmetric key support
+
+---
+# Configuration 1: HMAC (Symmetric) - Original/Default Mode
+# Use for internal single-issuer platforms
+security:
+  auth:
+    enabled: true
+    hmac-secret: "base64encodedsharedsecretkey123456789012345678"
+    issuer: "internal-auth-service"
+    audience: "my-internal-service"
+    roles-claim: "roles"
+    header-name: "Authorization"
+    header-prefix: "Bearer "
+    clock-skew-seconds: 30
+    reject-invalid-token: true
+
+---
+# Configuration 2: JWKS Endpoint - Keycloak
+# Use for external OAuth2 providers with dynamic key rotation
+security:
+  auth:
+    enabled: true
+    jwks-uri: "http://keycloak:8080/realms/master/protocol/openid-connect/certs"
+    issuer: "http://keycloak:8080/realms/master"
+    audience: "my-service-client"
+    roles-claim: "roles"
+    jwks-cache-duration-seconds: 300
+    clock-skew-seconds: 30
+    reject-invalid-token: true
+
+---
+# Configuration 3: JWKS Endpoint - Auth0
+security:
+  auth:
+    enabled: true
+    jwks-uri: "https://your-tenant.us.auth0.com/.well-known/jwks.json"
+    issuer: "https://your-tenant.us.auth0.com/"
+    audience: "your-api-identifier"
+    roles-claim: "roles"  # May vary depending on Auth0 setup
+    jwks-cache-duration-seconds: 300
+    clock-skew-seconds: 30
+    reject-invalid-token: true
+
+---
+# Configuration 4: Static PEM Public Key
+# Use when you have a single static public key for token verification
+security:
+  auth:
+    enabled: true
+    public-key-pem: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4f5wg5l2hKsT
+      eJspdlN0M7B/s8fnNIGiRB6VFQg5pxdtVCJwWuWQTy7tLOHVNhJ6SgVb
+      gTqG3VY6RYa3hqKzs4BBwJQlM3Q6wCbJ0f6mI7zNhLTsUKDNL9M1oM1n
+      +2tCkIIXoWwc5GyM8XFBJ2ErcPdlI8CvQzm7k0v7N8WqhS8OdS2wZQ5U
+      -----END PUBLIC KEY-----
+    issuer: "external-auth-provider"
+    audience: "my-service"
+    roles-claim: "roles"
+    clock-skew-seconds: 30
+    reject-invalid-token: true
+
+---
+# Configuration 5: Using Environment Variables (Docker/Kubernetes)
+# Store sensitive URLs in environment variables
+security:
+  auth:
+    enabled: true
+    jwks-uri: ${OAUTH2_JWKS_URI:http://keycloak:8080/realms/master/protocol/openid-connect/certs}
+    issuer: ${OAUTH2_ISSUER:http://keycloak:8080/realms/master}
+    audience: ${OAUTH2_AUDIENCE:my-service-client}
+    roles-claim: ${OAUTH2_ROLES_CLAIM:roles}
+    jwks-cache-duration-seconds: 300
+    clock-skew-seconds: 30
+    reject-invalid-token: true
+
+---
+# Configuration 6: Development/Testing with Keycloak Container
+# Assumes Keycloak running locally on default ports
+security:
+  auth:
+    enabled: true
+    jwks-uri: "http://localhost:8080/realms/development/protocol/openid-connect/certs"
+    issuer: "http://localhost:8080/realms/development"
+    audience: "my-local-service"
+    roles-claim: "roles"
+    jwks-cache-duration-seconds: 60  # Shorter cache for testing
+    clock-skew-seconds: 60  # Generous for dev environments
+    reject-invalid-token: false  # Allow unauthenticated access for public endpoints
+
+---
+# Configuration Notes:
+#
+# IMPORTANT: Only configure ONE of:
+#   - hmac-secret (symmetric/HMAC mode)
+#   - jwks-uri (remote JWKS endpoint)
+#   - public-key-pem (static PEM key)
+#
+# Configuring multiple will result in an error at startup.
+#
+# Common Claims (configurable via roles-claim):
+#   - Keycloak realm roles: "roles"
+#   - Keycloak client roles: "resource_access.{client_id}.roles" (needs custom parsing)
+#   - Auth0: "https://your-domain.com/roles"
+#   - Microsoft Entra ID: "roles" or "appRoles"
+#
+# Clock Skew:
+#   - 30 seconds: Normal production (default)
+#   - 60 seconds: For systems with significant time drift
+#   - 0 seconds: Strict validation (not recommended)
+#
+# Cache Duration:
+#   - 300 seconds (5 min): Reasonable default for most providers
+#   - 600 seconds (10 min): Reduces network overhead
+#   - 60 seconds: For testing/development with frequent key rotation

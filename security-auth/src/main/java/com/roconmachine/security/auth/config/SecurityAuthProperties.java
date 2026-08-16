@@ -10,13 +10,32 @@ public class SecurityAuthProperties {
 
     /**
      * HMAC shared secret (base64), for HS256/384/512. Set this OR
-     * publicKey/jwks-uri, not both - HMAC is the simple zero-infra default
+     * publicKeyPem/jwksUri, not both - HMAC is the simple zero-infra default
      * for a single-issuer internal platform; prefer an asymmetric key or a
      * JWKS endpoint when tokens are issued by a separate identity provider,
      * since HMAC requires sharing the same secret with whatever issues
      * tokens.
      */
     private String hmacSecret;
+
+    /**
+     * JWKS endpoint URI for fetching public keys (e.g., Keycloak, Auth0).
+     * Keys are cached and refreshed automatically. Takes precedence over
+     * publicKeyPem if both are set. Example: http://keycloak:9090/realms/myrealm/protocol/openid-connect/certs
+     */
+    private String jwksUri;
+
+    /**
+     * PEM-encoded RSA/EC public key for asymmetric verification.
+     * Used only if jwksUri is not set. Example: -----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----
+     */
+    private String publicKeyPem;
+
+    /**
+     * Cache duration for JWKS keys in seconds. Only used when jwksUri is configured.
+     * Defaults to 300 seconds (5 minutes).
+     */
+    private long jwksCacheDurationSeconds = 300;
 
     /** Expected issuer (`iss` claim). Tokens from any other issuer are rejected. */
     private String issuer;
@@ -71,4 +90,29 @@ public class SecurityAuthProperties {
 
     public boolean isRejectInvalidToken() { return rejectInvalidToken; }
     public void setRejectInvalidToken(boolean rejectInvalidToken) { this.rejectInvalidToken = rejectInvalidToken; }
+
+    public String getJwksUri() { return jwksUri; }
+    public void setJwksUri(String jwksUri) { this.jwksUri = jwksUri; }
+
+    public String getPublicKeyPem() { return publicKeyPem; }
+    public void setPublicKeyPem(String publicKeyPem) { this.publicKeyPem = publicKeyPem; }
+
+    public long getJwksCacheDurationSeconds() { return jwksCacheDurationSeconds; }
+    public void setJwksCacheDurationSeconds(long jwksCacheDurationSeconds) { this.jwksCacheDurationSeconds = jwksCacheDurationSeconds; }
+
+    /**
+     * Determines if asymmetric key validation should be used.
+     * Returns true if jwksUri or publicKeyPem is configured.
+     */
+    public boolean isAsymmetricKeyConfigured() {
+        return (jwksUri != null && !jwksUri.isBlank()) ||
+               (publicKeyPem != null && !publicKeyPem.isBlank());
+    }
+
+    /**
+     * Determines if HMAC validation should be used.
+     */
+    public boolean isHmacConfigured() {
+        return hmacSecret != null && !hmacSecret.isBlank();
+    }
 }
