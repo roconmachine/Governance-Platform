@@ -1,0 +1,8 @@
+com/roconmachine/governance/httplog/config/GovernanceHttpLoggingProperties$Async.class
+com/roconmachine/governance/httplog/config/GovernanceHttpLoggingProperties.class
+com/roconmachine/governance/httplog/publisher/LoggingHttpAccessLogPublisher.class
+com/roconmachine/governance/httplog/publisher/HttpAccessLogPublisher.class
+com/roconmachine/governance/httplog/model/HttpAccessLogEvent.class
+com/roconmachine/governance/httplog/endpoint/GovernanceHttpLoggingInfoEndpoint.class
+com/roconmachine/governance/httplog/filter/HttpLoggingFilter.class
+com/roconmachine/governance/httplog/config/GovernanceHttpLoggingAutoConfiguration.class

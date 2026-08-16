@@ -1,0 +1,11 @@
+com/roconmachine/governance/audit/endpoint/GovernanceAuditInfoEndpoint.class
+com/roconmachine/governance/audit/config/GovernanceAuditProperties$Sink.class
+com/roconmachine/governance/audit/config/GovernanceAuditProperties$Async.class
+com/roconmachine/governance/audit/model/AuditEvent.class
+com/roconmachine/governance/audit/config/GovernanceAuditAutoConfiguration.class
+com/roconmachine/governance/audit/publisher/AuditEventPublisher.class
+com/roconmachine/governance/audit/publisher/NoopAuditEventPublisher.class
+com/roconmachine/governance/audit/aspect/AuditLoggingAspect.class
+com/roconmachine/governance/audit/annotation/Auditable.class
+com/roconmachine/governance/audit/config/GovernanceAuditProperties.class
+com/roconmachine/governance/audit/publisher/LoggingAuditEventPublisher.class

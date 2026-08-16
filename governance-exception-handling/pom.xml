@@ -13,7 +13,7 @@
 
     <groupId>com.roconmachine</groupId>
     <artifactId>governance-exception-handling</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>Governance :: Exception Handling</name>
     <description>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-core</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>

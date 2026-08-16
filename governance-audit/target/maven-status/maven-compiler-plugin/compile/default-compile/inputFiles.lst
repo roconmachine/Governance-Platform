@@ -1,0 +1,9 @@
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/annotation/Auditable.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/aspect/AuditLoggingAspect.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/config/GovernanceAuditAutoConfiguration.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/config/GovernanceAuditProperties.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/endpoint/GovernanceAuditInfoEndpoint.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/model/AuditEvent.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/publisher/AuditEventPublisher.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/publisher/LoggingAuditEventPublisher.java
+/workspaces/Governance-Platform/governance-audit/src/main/java/com/roconmachine/governance/audit/publisher/NoopAuditEventPublisher.java
