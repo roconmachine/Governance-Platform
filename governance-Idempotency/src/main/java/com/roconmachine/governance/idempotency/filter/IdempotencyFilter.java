@@ -1,5 +1,7 @@
-package com.roconmachine.governance.idempotency;
+package com.roconmachine.governance.idempotency.filter;
 
+import com.roconmachine.governance.idempotency.IdempotencyStore;
+import com.roconmachine.governance.idempotency.annotation.Idempotent;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,13 +47,13 @@ public class IdempotencyFilter extends OncePerRequestFilter {
 
         // Check if endpoint is annotated with @Idempotent
         HandlerMethod handlerMethod = getHandlerMethod(request);
-        if (handlerMethod == null || !handlerMethod.hasMethodAnnotation(com.fintech.governance.annotation.Idempotent.class)) {
+        if (handlerMethod == null || !handlerMethod.hasMethodAnnotation(Idempotent.class)) {
             filterChain.doFilter(request, response);
             return;
         }
 
         // Wrap stream readers for payload evaluation & response caching
-        ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request);
+        ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request, 1024);
         ContentCachingResponseWrapper wrappedResponse = new ContentCachingResponseWrapper(response);
 
         // Force body caching

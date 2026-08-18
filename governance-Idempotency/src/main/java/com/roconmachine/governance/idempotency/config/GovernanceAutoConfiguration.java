@@ -1,36 +1,31 @@
 package com.roconmachine.governance.idempotency.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.roconmachine.governance.idempotency.IdempotencyFilter;
 import com.roconmachine.governance.idempotency.IdempotencyStore;
-import com.roconmachine.governance.idempotency.impl.InMemoryIdempotencyStore;
-import com.roconmachine.governance.idempotency.impl.RedisIdempotencyStore;
-
+import com.roconmachine.governance.idempotency.InMemoryIdempotencyStore;
+import com.roconmachine.governance.idempotency.filter.IdempotencyFilter;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @AutoConfiguration
 public class GovernanceAutoConfiguration {
 
     // --- Redis Strategy Auto-Configuration ---
-    @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass(StringRedisTemplate.class)
-    @ConditionalOnBean(StringRedisTemplate.class)
-    static class RedisIdempotencyConfiguration {
-
-        @Bean
-        @ConditionalOnMissingBean(IdempotencyStore.class)
-        public IdempotencyStore redisIdempotencyStore(StringRedisTemplate redisTemplate, ObjectMapper objectMapper) {
-            return new RedisIdempotencyStore(redisTemplate, objectMapper);
-        }
-    }
+//    @Configuration(proxyBeanMethods = false)
+//    @ConditionalOnClass(StringRedisTemplate.class)
+//    @ConditionalOnBean(StringRedisTemplate.class)
+//    static class RedisIdempotencyConfiguration {
+//
+//        @Bean
+//        @ConditionalOnMissingBean(IdempotencyStore.class)
+//        public IdempotencyStore redisIdempotencyStore(StringRedisTemplate redisTemplate, ObjectMapper objectMapper) {
+//            return new RedisIdempotencyStore(redisTemplate, objectMapper);
+//        }
+//    }
 
     // --- In-Memory Fallback Auto-Configuration (For Local Dev / Testing) ---
     @Configuration(proxyBeanMethods = false)

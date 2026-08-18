@@ -1,4 +1,4 @@
-package com.roconmachine.governance.annotation;
+package com.roconmachine.governance.idempotency.annotation;
 
 import java.lang.annotation.*;
 

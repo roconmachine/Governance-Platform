@@ -1,6 +1,4 @@
-package com.roconmachine.governance.idempotency.impl;
-
-import com.roconmachine.governance.idempotency.IdempotencyStore;
+package com.roconmachine.governance.idempotency;
 
 import java.time.Duration;
 import java.time.Instant;
