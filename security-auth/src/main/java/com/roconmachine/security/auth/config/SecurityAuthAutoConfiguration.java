@@ -86,4 +86,22 @@ public class SecurityAuthAutoConfiguration {
     public SecurityAuthInfoEndpoint securityAuthInfoEndpoint(SecurityAuthProperties properties) {
         return new SecurityAuthInfoEndpoint(properties);
     }
+    @Bean
+    @ConditionalOnMissingBean
+    public SigningKeyProvider signingKeyProvider(SecurityTokenIssuerProperties properties) {
+        return new PropertiesSigningKeyProvider(properties);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public TokenIssuer tokenIssuer(SigningKeyProvider signingKeyProvider, SecurityTokenIssuerProperties properties) {
+        return new JwtTokenIssuer(signingKeyProvider, properties);
+    }
+
+    @Bean
+    @ConditionalOnAvailableEndpoint
+    @ConditionalOnMissingBean
+    public SecurityTokenIssuerInfoEndpoint securityTokenIssuerInfoEndpoint(SecurityTokenIssuerProperties properties) {
+        return new SecurityTokenIssuerInfoEndpoint(properties);
+    }
 }
