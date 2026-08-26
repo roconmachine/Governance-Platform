@@ -1,6 +1,6 @@
 # governance-audit
 
-Turns "every fund-transfer must be audited, PII must never appear in logs"
+Turns "every transaction must be audited, PII must never appear in logs"
 from policy documents into a Maven dependency. Add the jar (plus its
 `governance-core` dependency, pulled in transitively), get the policy - no
 service-side wiring required.
@@ -11,7 +11,7 @@ service-side wiring required.
 <dependency>
     <groupId>com.platform.governance</groupId>
     <artifactId>governance-audit</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>{version}</version>
 </dependency>
 ```
 
@@ -53,7 +53,7 @@ record `actor=system` rather than failing.
 public TransferResult transfer(TransferRequest request) { ... }
 
 @Auditable(action = "APPROVE_HIGH_VALUE_TRANSFER", resource = "PAYMENT", async = false)  // opt into blocking
-public TransferResult approveHighValueTransfer(TransferRequest request) { ... }
+public TransferResult approveHighValueTransfer(TransferRequest request) { ... }  
 ```
 
 **`async = true` is the default.** The annotated method returns without
@@ -147,22 +147,6 @@ A service can override a single piece of behavior (e.g. supply its own
 `AuditEventPublisher` to ship events to a central audit store) without
 forking the module, because every bean is `@ConditionalOnMissingBean`.
 
-## Where this fits in the wider platform
-
-```
-governance-core                    - correlation id, actor, @Sensitive masking (shared)
-governance-audit           - this module: @Auditable business-action trail
-governance-http-logging    - HTTP request/response access logging
-```
-
-Same pattern (`@AutoConfiguration` + annotations + fail-closed defaults +
-`@ConditionalOnMissingBean` escape hatches) is how the rest of the
-governance suite should be built next:
-
-- `governance-resilience` - mandatory timeout/retry/circuit-breaker defaults
-- `governance-api-standards` - standard error envelope & versioning
-- `governance-archunit` - packaged layering rules run in every service's CI
-- `governance-policy-engine` - OPA/Rego-backed dynamic business rules
 
 ## Build
 
@@ -170,6 +154,3 @@ governance suite should be built next:
 mvn clean verify
 ```
 
-`GovernanceArchitectureTest` (ArchUnit) fails the build if this module's own
-layering rules are violated - governance applied to the governance code
-itself.
