@@ -16,6 +16,9 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.RejectedExecutionException;
 
@@ -115,6 +118,36 @@ public class AuditLoggingAspect {
             sb.append(" error=").append(error.getClass().getSimpleName()).append(": ").append(error.getMessage());
         }
         return sb.toString();
+    }
+    private String extractArguments(ProceedingJoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        String[] parameterNames = signature.getParameterNames();
+        Object[] args = joinPoint.getArgs();
+
+        if (parameterNames == null || args == null || parameterNames.length == 0) {
+            return "none";
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < parameterNames.length; i++) {
+            if (i > 0) {
+                builder.append(", ");
+            }
+
+            String name = parameterNames[i];
+            Object value = args[i];
+
+            builder.append(name).append("=");
+
+            // Format strings with quotes, handles null gracefully
+            if (value instanceof String) {
+                builder.append("'").append(value).append("'");
+            } else {
+                builder.append(Objects.toString(value, "null"));
+            }
+        }
+
+        return builder.toString();
     }
 
     private void publish(AuditEvent event, boolean async) {
