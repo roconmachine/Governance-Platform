@@ -1,5 +1,6 @@
 package com.roconmachine.governance.audit.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roconmachine.governance.audit.aspect.AuditLoggingAspect;
 import com.roconmachine.governance.audit.endpoint.GovernanceAuditInfoEndpoint;
 import com.roconmachine.governance.audit.publisher.AuditEventPublisher;
@@ -87,11 +88,11 @@ public class GovernanceAuditAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public AuditLoggingAspect auditLoggingAspect(GovernanceAuditProperties properties,
-                                                  GovernanceCoreProperties coreProperties,
-                                                  AuditEventPublisher publisher,
-                                                  SensitiveDataMasker masker,
-                                                  @Qualifier("governanceAuditExecutor") Executor executor,
-                                                  Environment environment) {
+                                                 GovernanceCoreProperties coreProperties,
+                                                 AuditEventPublisher publisher,
+                                                 SensitiveDataMasker masker,
+                                                 @Qualifier("governanceAuditExecutor") Executor executor,
+                                                 Environment environment) {
         String serviceName = resolveServiceName(properties, environment);
         return new AuditLoggingAspect(properties, coreProperties, publisher, masker, executor, serviceName);
     }

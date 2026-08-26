@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-audit</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.7</version>
         </dependency>
 
 <!--        <dependency>-->
@@ -112,5 +112,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

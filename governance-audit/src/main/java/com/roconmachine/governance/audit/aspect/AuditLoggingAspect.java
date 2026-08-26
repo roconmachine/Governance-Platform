@@ -1,5 +1,6 @@
 package com.roconmachine.governance.audit.aspect;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.roconmachine.governance.audit.annotation.Auditable;
 import com.roconmachine.governance.audit.config.GovernanceAuditProperties;
 import com.roconmachine.governance.audit.model.AuditEvent;
@@ -16,11 +17,10 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.RejectedExecutionException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * The actual enforcement of the @Auditable contract: every call to an
@@ -54,6 +54,7 @@ public class AuditLoggingAspect {
     private final SensitiveDataMasker masker;
     private final Executor asyncExecutor;
     private final String serviceName;
+    private final ObjectMapper objectMapper;
 
     public AuditLoggingAspect(GovernanceAuditProperties properties,
                                GovernanceCoreProperties coreProperties,
@@ -67,6 +68,7 @@ public class AuditLoggingAspect {
         this.masker = masker;
         this.asyncExecutor = asyncExecutor;
         this.serviceName = serviceName;
+        this.objectMapper = new ObjectMapper();
     }
 
     @Around("@annotation(com.roconmachine.governance.audit.annotation.Auditable)")
@@ -120,7 +122,7 @@ public class AuditLoggingAspect {
         }
         return sb.toString();
     }
-    private String extractArguments(ProceedingJoinPoint joinPoint) {
+    private String extractArguments(ProceedingJoinPoint joinPoint)  {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         String[] parameterNames = signature.getParameterNames();
         Object[] args = joinPoint.getArgs();
@@ -144,7 +146,13 @@ public class AuditLoggingAspect {
             if (value instanceof String) {
                 builder.append("'").append(value).append("'");
             } else {
-                builder.append(Objects.toString(value, "null"));
+                try {
+                    builder.append(Objects.toString(objectMapper.writeValueAsString(value), "null"));
+                }catch (JsonProcessingException e)
+                {
+                    e.printStackTrace();
+                }
+
             }
         }
 

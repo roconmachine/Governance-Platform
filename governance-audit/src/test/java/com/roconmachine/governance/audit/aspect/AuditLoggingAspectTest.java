@@ -1,5 +1,6 @@
 package com.roconmachine.governance.audit.aspect;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roconmachine.governance.audit.aspect.fixtures.SampleAuditedService;
 import com.roconmachine.governance.audit.config.GovernanceAuditProperties;
 import com.roconmachine.governance.audit.model.AuditEvent;
