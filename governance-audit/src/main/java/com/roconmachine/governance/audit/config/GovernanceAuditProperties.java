@@ -15,7 +15,7 @@ public class GovernanceAuditProperties {
     /** Master switch. Defaults to true - audit is opt-out, not opt-in. */
     private boolean enabled = true;
 
-    /** Where audit events go. LOG is the safe zero-infra default; teams can supply their own AuditEventPublisher bean instead. */
+    /** Where audit events governance. LOG is the safe zero-infra default; teams can supply their own AuditEventPublisher bean instead. */
     private Sink sink = Sink.LOG;
 
     /** Fail the call if an @Auditable method throws and the publisher itself fails? Default: no - governance must never take down the business flow. */

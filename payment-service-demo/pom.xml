@@ -51,22 +51,14 @@
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-audit</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.roconmachine</groupId>
-            <artifactId>governance-http-logging</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <!-- Chosen over governance-exception-handling - see class-level Javadoc above -->
-        <dependency>
-            <groupId>com.roconmachine</groupId>
-            <artifactId>governance-app-response</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
+<!--        <dependency>-->
+<!--            <groupId>com.roconmachine</groupId>-->
+<!--            <artifactId>governance-http-logging</artifactId>-->
+<!--            <version>1.0.1</version>-->
+<!--        </dependency>-->
 
 
         <!-- ===================== security-* ===================== -->
@@ -77,23 +69,7 @@
             <version>1.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.platform.security</groupId>
-            <artifactId>security-auth</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.platform.security</groupId>
-            <artifactId>security-rbac</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.platform.security</groupId>
-            <artifactId>security-auth-ms-exchange</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 
         <!-- ===================== ordinary Spring Boot pieces this demo needs ===================== -->
 

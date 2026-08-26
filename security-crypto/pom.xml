@@ -11,9 +11,9 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.platform.security</groupId>
+    <groupId>com.roconmachine</groupId>
     <artifactId>security-crypto</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>Security :: Crypto</name>
     <description>
