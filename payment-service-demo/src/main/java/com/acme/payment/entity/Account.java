@@ -1,7 +1,7 @@
 package com.acme.payment.entity;
 
-import com.platform.security.crypto.annotation.Encrypted;
-import com.platform.security.crypto.config.EncryptedStringConverter;
+import com.roconmachine.security.crypto.annotation.Encrypted;
+import com.roconmachine.security.crypto.config.EncryptedStringConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;

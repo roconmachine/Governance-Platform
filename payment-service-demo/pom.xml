@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.roconmachine</groupId>
             <artifactId>governance-audit</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
 
 <!--        <dependency>-->
@@ -64,9 +64,9 @@
         <!-- ===================== security-* ===================== -->
 
         <dependency>
-            <groupId>com.platform.security</groupId>
+            <groupId>com.roconmachine</groupId>
             <artifactId>security-crypto</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.3</version>
         </dependency>
 
 

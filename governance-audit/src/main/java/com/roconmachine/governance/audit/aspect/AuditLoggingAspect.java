@@ -89,26 +89,27 @@ public class AuditLoggingAspect {
         try {
             Object result = joinPoint.proceed();
 
-            String detail = buildDetail(auditable, joinPoint.getArgs(), result, null);
+            String detail = buildDetail(auditable, joinPoint, result, null);
             publish(new AuditEvent(serviceName, correlationId, action, resource, actor, "SUCCESS",
                     detail, System.currentTimeMillis() - start, timestamp), auditable.async());
 
             return result;
         } catch (Throwable ex) {
-            String detail = buildDetail(auditable, joinPoint.getArgs(), null, ex);
+            String detail = buildDetail(auditable, joinPoint, null, ex);
             publish(new AuditEvent(serviceName, correlationId, action, resource, actor, "FAILURE",
                     detail, System.currentTimeMillis() - start, timestamp), auditable.async());
             throw ex;
         }
     }
 
-    private String buildDetail(Auditable auditable, Object[] args, Object result, Throwable error) {
+    private String buildDetail(Auditable auditable, ProceedingJoinPoint joinPoint, Object result, Throwable error) {
         StringBuilder sb = new StringBuilder();
-        if (auditable.captureArgs() && args != null && args.length > 0) {
+        if (auditable.captureArgs() && joinPoint.getArgs() != null && joinPoint.getArgs().length > 0) {
             sb.append("args=[");
-            for (Object arg : args) {
-                sb.append(coreProperties.isMaskSensitiveData() ? masker.mask(arg) : String.valueOf(arg)).append("; ");
-            }
+            sb.append(extractArguments(joinPoint));
+//            for (Object arg : args) {
+//                sb.append(coreProperties.isMaskSensitiveData() ? masker.mask(arg) : String.valueOf(arg)).append("; ");
+//            }
             sb.append("]");
         }
         if (auditable.captureResult() && result != null) {

@@ -69,19 +69,19 @@ application:
 # =====================================================================
 # security-crypto - AES-GCM field encryption + @EncryptedAPI
 # =====================================================================
-security:
+ssecurity:
   crypto:
-    default-key-id: default
+    enabled: true
+    default-key-id: "primary-key"
+    key-env-prefix: "APP_ENCRYPTION_KEY_"
     keys:
-      # DEMO ONLY - generate your own with `openssl rand -base64 32` and
-      # inject via ENCRYPTION_KEY_DEFAULT env var in any real deployment,
-      # never commit a real key to application.yml.
-      default: "MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDE="
+      - "c2VjcmV0S2V5T25lMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
+      - "c2VjcmV0S2V5VHdvMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
     encrypted-api:
       enabled: true
-      header-name: X-Encrypted        # see PaymentController.secureEcho() for a live example
+      header-name: "X-Payload-Encrypted"
       header-true-value: "true"
-      payload-field-name: data
+      payload-field-name: "data"
 
   # ===================================================================
   # security-auth - JWT validation, populates Spring Security's context
