@@ -107,7 +107,7 @@ public class AuditLoggingAspect {
         if (auditable.captureArgs() && joinPoint.getArgs() != null && joinPoint.getArgs().length > 0) {
             sb.append("args=[");
             sb.append(extractArguments(joinPoint));
-//            for (Object arg : args) {
+//            for (Object arg : joinPoint.getArgs()) {
 //                sb.append(coreProperties.isMaskSensitiveData() ? masker.mask(arg) : String.valueOf(arg)).append("; ");
 //            }
             sb.append("]");
