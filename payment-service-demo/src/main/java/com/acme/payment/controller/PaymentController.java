@@ -13,9 +13,9 @@ import java.util.Map;
 @RequestMapping("/api")
 public class PaymentController {
 
-    @Auditable
+    @Auditable(captureArgs = true)
     @GetMapping("/hello")
-    public ResponseEntity<String> hello(){
-        return ResponseEntity.ok("hi");
+    public ResponseEntity<String> hello(@RequestParam("name") String name){
+        return ResponseEntity.ok("hi ".concat(name));
     }
 }
