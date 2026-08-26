@@ -69,14 +69,14 @@ application:
 # =====================================================================
 # security-crypto - AES-GCM field encryption + @EncryptedAPI
 # =====================================================================
-ssecurity:
+security:
   crypto:
     enabled: true
     default-key-id: "primary-key"
     key-env-prefix: "APP_ENCRYPTION_KEY_"
     keys:
-      - "c2VjcmV0S2V5T25lMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
-      - "c2VjcmV0S2V5VHdvMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
+      primary-key: "c2VjcmV0S2V5T25lMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
+      secondary-key: "c2VjcmV0S2V5VHdvMTIzNDU2Nzg5MDEyMzQ1Njc4OTA="
     encrypted-api:
       enabled: true
       header-name: "X-Payload-Encrypted"

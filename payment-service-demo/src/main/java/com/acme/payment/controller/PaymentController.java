@@ -21,7 +21,7 @@ public class PaymentController {
     }
 
 
-    @Auditable
+    @Auditable(captureArgs = true)
     @PostMapping("/send")
     public ResponseEntity<String> send(@RequestBody Account account) {
         return ResponseEntity.ok("received");
