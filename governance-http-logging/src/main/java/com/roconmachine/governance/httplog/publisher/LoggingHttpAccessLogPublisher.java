@@ -13,7 +13,7 @@ import org.slf4j.MarkerFactory;
  */
 public class LoggingHttpAccessLogPublisher implements HttpAccessLogPublisher {
 
-    private static final Logger ACCESS_LOG = LoggerFactory.getLogger("HTTP_ACCESS");
+    private static final Logger ACCESS_LOG = LoggerFactory.getLogger("HTTP");
     private static final org.slf4j.Marker ACCESS_MARKER = MarkerFactory.getMarker("GOVERNANCE_HTTP_ACCESS");
 
     @Override
