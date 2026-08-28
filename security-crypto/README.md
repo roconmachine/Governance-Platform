@@ -16,7 +16,7 @@ provider, a JPA converter for transparent field-level encryption, and an
 <dependency>
     <groupId>com.platform.security</groupId>
     <artifactId>security-crypto</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>{version}</version>
 </dependency>
 ```
 

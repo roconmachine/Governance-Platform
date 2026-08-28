@@ -9,6 +9,7 @@ import com.roconmachine.security.crypto.engine.EncryptionService;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -56,8 +57,6 @@ public class EncryptedApiResponseBodyAdvice implements ResponseBodyAdvice<Object
                                    Class<? extends HttpMessageConverter<?>> selectedConverterType,
                                    ServerHttpRequest request, ServerHttpResponse response) {
         if (body == null) {
-            // Nothing to encrypt (e.g. a 204 No Content) - leave as-is rather
-            // than producing a confusing encrypted-empty-string envelope.
             return null;
         }
         try {
@@ -67,9 +66,36 @@ public class EncryptedApiResponseBodyAdvice implements ResponseBodyAdvice<Object
             SecurityCryptoProperties.EncryptedApi config = properties.getEncryptedApi();
             response.getHeaders().set(config.getHeaderName(), config.getHeaderTrueValue());
 
-            return Map.of(config.getPayloadFieldName(), ciphertext);
+            Map<String, String> payloadMap = Map.of(config.getPayloadFieldName(), ciphertext);
+
+            // FIX: Add null check for selectedConverterType before calling isAssignableFrom
+            boolean isStringConverter = selectedConverterType != null
+                    && StringHttpMessageConverter.class.isAssignableFrom(selectedConverterType);
+
+            if (isStringConverter) {
+                response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+                return objectMapper.writeValueAsString(payloadMap);
+            }
+
+            return payloadMap;
         } catch (JsonProcessingException e) {
             throw new EncryptionException("Failed to serialize response body for @EncryptedAPI encryption", e);
         }
+//        if (body == null) {
+//            // Nothing to encrypt (e.g. a 204 No Content) - leave as-is rather
+//            // than producing a confusing encrypted-empty-string envelope.
+//            return null;
+//        }
+//        try {
+//            String json = objectMapper.writeValueAsString(body);
+//            String ciphertext = encryptionService.encrypt(json);
+//
+//            SecurityCryptoProperties.EncryptedApi config = properties.getEncryptedApi();
+//            response.getHeaders().set(config.getHeaderName(), config.getHeaderTrueValue());
+//
+//            return Map.of(config.getPayloadFieldName(), ciphertext);
+//        } catch (JsonProcessingException e) {
+//            throw new EncryptionException("Failed to serialize response body for @EncryptedAPI encryption", e);
+//        }
     }
 }

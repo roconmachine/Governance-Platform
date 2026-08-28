@@ -17,25 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 import java.io.IOException;
 
-/**
- * A Filter runs BEFORE Spring MVC has resolved which controller method will
- * handle a request - so to know whether the target method carries
- * {@code @EncryptedAPI} (and therefore whether to decrypt at all), this
- * filter resolves the handler itself via
- * {@link RequestMappingHandlerMapping#getHandler}, the same method the real
- * dispatch will call again later. This does mean handler resolution
- * effectively happens twice per request - an accepted, documented
- * trade-off for annotation-driven, not header-driven-alone, decryption:
- * the alternative (decrypt for EVERY request carrying the header,
- * regardless of whether the target method opted in) would silently
- * "succeed" on endpoints that never asked for this behavior.
- *
- * Only ever decrypts when BOTH are true: the resolved handler method (or
- * its declaring class) carries {@code @EncryptedAPI}, AND the configured
- * header is present with the configured "true" value. A request without
- * the header proceeds completely unmodified - this filter is not a
- * mandatory gate, only an opt-in transform.
- */
+
 public class EncryptedApiRequestDecryptionFilter extends OncePerRequestFilter {
 
     private final RequestMappingHandlerMapping handlerMapping;
@@ -57,14 +39,15 @@ public class EncryptedApiRequestDecryptionFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        HandlerMethod handlerMethod = resolveHandlerMethod(request);
-        boolean isEncryptedApiEndpoint = handlerMethod != null && isAnnotated(handlerMethod);
+//        HandlerMethod handlerMethod = resolveHandlerMethod(request);
+//        boolean isEncryptedApiEndpoint = handlerMethod != null && isAnnotated(handlerMethod);
 
         SecurityCryptoProperties.EncryptedApi config = properties.getEncryptedApi();
         String headerValue = request.getHeader(config.getHeaderName());
         boolean callerSignalsEncryptedBody = config.getHeaderTrueValue().equalsIgnoreCase(headerValue);
 
-        if (!isEncryptedApiEndpoint || !callerSignalsEncryptedBody) {
+        //if (!isEncryptedApiEndpoint || !callerSignalsEncryptedBody) {
+        if (!callerSignalsEncryptedBody) {
             filterChain.doFilter(request, response);
             return;
         }
