@@ -59,16 +59,14 @@ public class GovernanceHttpLoggingProperties {
      * and the reason includeBody defaults to false: this is a best-effort net,
      * not a guarantee, for arbitrary/nested/array JSON shapes.
      */
-    private List<String> sensitiveBodyFields = List.of(
-            "cardNumber", "pan", "cvv", "cvv2", "pin", "password", "ssn", "nationalId", "accountNumber");
+    private List<String> sensitiveBodyFields = List.of("cardNumber", "pan", "cvv", "cvv2", "pin", "password", "ssn", "nationalId", "accountNumber");
 
     /**
      * Query-string/request-parameter NAMES masked with sensitiveHeaderStrategy
      * whenever captured (name-matched case-insensitively) - separate from
      * sensitiveBodyFields since these are plain key=value pairs, not JSON.
      */
-    private List<String> sensitiveParameterNames = List.of(
-            "cardNumber", "pan", "cvv", "cvv2", "pin", "password", "token", "ssn", "accountNumber");
+    private List<String> sensitiveParameterNames = List.of("cardNumber", "pan", "cvv", "cvv2", "pin", "password", "token", "ssn", "accountNumber");
 
     /**
      * Fraction of requests actually logged, 0.0-1.0. Lets high-throughput
