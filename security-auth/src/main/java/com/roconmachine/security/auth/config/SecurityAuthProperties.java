@@ -1,6 +1,9 @@
 package com.roconmachine.security.auth.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 @ConfigurationProperties(prefix = "security.auth")
 public class SecurityAuthProperties {
@@ -39,6 +42,21 @@ public class SecurityAuthProperties {
 
     /** Expected issuer (`iss` claim). Tokens from any other issuer are rejected. */
     private String issuer;
+    /**
+     * Which entry in {@link #keys} is used to sign NEW tokens. Required -
+     * refuses to start without one, same fail-closed philosophy as
+     * security-crypto's EnvKeyProvider: an issuer with no designated
+     * signing key is a misconfiguration, not a state to run in.
+     */
+    private String activeKeyId;
+    /**
+     * Base64-encoded HMAC key material, keyed by key id (the JWT `kid`
+     * header). Keep every key a token currently in circulation might have
+     * been signed with, not just activeKeyId - removing an entry here
+     * before its longest-lived token would have expired anyway breaks
+     * verification/refresh for tokens still out there.
+     */
+    private Map<String, String> keys = new HashMap<>();
 
     /** Expected audience (`aud` claim). Left blank to skip audience validation. */
     private String audience;
@@ -54,6 +72,11 @@ public class SecurityAuthProperties {
 
     /** Allowed clock skew, in seconds, when checking expiry/not-before. */
     private long clockSkewSeconds = 30;
+    /** Default token lifetime when a caller doesn't override it via TokenClaims.timeToLive(...). */
+    private Duration defaultTimeToLive = Duration.ofHours(1);
+
+    /** HMAC signature algorithm. HS512 by default - matches the ported library's default. */
+    private String algorithm = "HS512";
 
     /**
      * If a token is present but fails validation, respond 401 immediately
@@ -115,4 +138,15 @@ public class SecurityAuthProperties {
     public boolean isHmacConfigured() {
         return hmacSecret != null && !hmacSecret.isBlank();
     }
+
+    public String getAlgorithm() { return algorithm; }
+    public void setAlgorithm(String algorithm) { this.algorithm = algorithm; }
+    public String getActiveKeyId() { return activeKeyId; }
+    public void setActiveKeyId(String activeKeyId) { this.activeKeyId = activeKeyId; }
+
+    public Map<String, String> getKeys() { return keys; }
+    public void setKeys(Map<String, String> keys) { this.keys = keys; }
+
+    public Duration getDefaultTimeToLive() { return defaultTimeToLive; }
+    public void setDefaultTimeToLive(Duration defaultTimeToLive) { this.defaultTimeToLive = defaultTimeToLive; }
 }
