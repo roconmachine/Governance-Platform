@@ -4,9 +4,9 @@ import com.roconmachine.governance.core.config.GovernanceCoreAutoConfiguration;
 import com.roconmachine.governance.core.config.GovernanceCoreProperties;
 import com.roconmachine.security.auth.endpoint.SecurityAuthInfoEndpoint;
 import com.roconmachine.security.auth.filter.JwtAuthenticationFilter;
-import com.roconmachine.security.auth.jwt.AsymmetricJwtValidator;
-import com.roconmachine.security.auth.jwt.JwtTokenValidator;
-import com.roconmachine.security.auth.jwt.TokenValidator;
+import com.roconmachine.security.auth.jwt.*;
+import com.roconmachine.security.auth.key.PropertiesSigningKeyProvider;
+import com.roconmachine.security.auth.key.SigningKeyProvider;
 import jakarta.servlet.Filter;
 import org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -88,20 +88,20 @@ public class SecurityAuthAutoConfiguration {
     }
     @Bean
     @ConditionalOnMissingBean
-    public SigningKeyProvider signingKeyProvider(SecurityTokenIssuerProperties properties) {
+    public SigningKeyProvider signingKeyProvider(SecurityAuthProperties properties) {
         return new PropertiesSigningKeyProvider(properties);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public TokenIssuer tokenIssuer(SigningKeyProvider signingKeyProvider, SecurityTokenIssuerProperties properties) {
+    public TokenIssuer tokenIssuer(SigningKeyProvider signingKeyProvider, SecurityAuthProperties properties) {
         return new JwtTokenIssuer(signingKeyProvider, properties);
     }
 
     @Bean
     @ConditionalOnAvailableEndpoint
     @ConditionalOnMissingBean
-    public SecurityTokenIssuerInfoEndpoint securityTokenIssuerInfoEndpoint(SecurityTokenIssuerProperties properties) {
-        return new SecurityTokenIssuerInfoEndpoint(properties);
+    public SecurityAuthInfoEndpoint securityTokenIssuerInfoEndpoint(SecurityAuthProperties properties) {
+        return new SecurityAuthInfoEndpoint(properties);
     }
 }

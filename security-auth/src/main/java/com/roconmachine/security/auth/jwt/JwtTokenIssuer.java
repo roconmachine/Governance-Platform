@@ -1,35 +1,28 @@
-package com.platform.security.issuer;
+package com.roconmachine.security.auth.jwt;
 
-import com.platform.security.issuer.config.SecurityTokenIssuerProperties;
-import com.platform.security.issuer.key.SigningKeyProvider;
-import com.platform.security.issuer.model.TokenClaims;
-import com.platform.security.issuer.model.TokenIssuerException;
+import com.roconmachine.security.auth.config.SecurityAuthProperties;
+import com.roconmachine.security.auth.model.TokenClaims;
+import com.roconmachine.security.auth.model.TokenIssuerException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Locator;
 import io.jsonwebtoken.security.MacAlgorithm;
-
 import java.security.Key;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import com.roconmachine.security.auth.key.*;
 
-/**
- * Thread-safety: holds no mutable state beyond its (thread-safe)
- * collaborators - jjwt's builders/parsers are created fresh per call, and
- * {@link SigningKeyProvider} implementations are expected to be safe for
- * concurrent use (the default {@code PropertiesSigningKeyProvider} is).
- */
 public class JwtTokenIssuer implements TokenIssuer {
 
-    private final SigningKeyProvider keyProvider;
-    private final SecurityTokenIssuerProperties properties;
+    private final com.roconmachine.security.auth.key.SigningKeyProvider keyProvider;
+    private final SecurityAuthProperties properties;
     private final Locator<Key> keyLocator;
 
-    public JwtTokenIssuer(SigningKeyProvider keyProvider, SecurityTokenIssuerProperties properties) {
+    public JwtTokenIssuer(SigningKeyProvider keyProvider, SecurityAuthProperties properties) {
         this.keyProvider = keyProvider;
         this.properties = properties;
         // Resolves the verification key from EACH token's own `kid` header,

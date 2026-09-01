@@ -1,15 +1,9 @@
-package com.platform.security.issuer.model;
+package com.roconmachine.security.auth.model;
 
 import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * What you're asking {@code TokenIssuer} to mint. Deliberately a plain,
- * framework-agnostic builder - mirrors the shape of the ported library's
- * {@code JWTPayload}, but immutable and without the JPA-adjacent
- * {@code Entity} coupling that class had.
- */
 public final class TokenClaims {
 
     private final String subject;

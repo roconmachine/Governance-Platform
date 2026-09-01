@@ -1,7 +1,7 @@
-package com.platform.security.issuer.key;
+package com.roconmachine.security.auth.key;
 
-import com.platform.security.issuer.config.SecurityTokenIssuerProperties;
-import com.platform.security.issuer.model.TokenIssuerException;
+import com.roconmachine.security.auth.config.SecurityAuthProperties;
+import com.roconmachine.security.auth.model.TokenIssuerException;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -18,10 +18,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class PropertiesSigningKeyProvider implements SigningKeyProvider {
 
-    private final SecurityTokenIssuerProperties properties;
+    private final SecurityAuthProperties properties;
     private final Map<String, SecretKey> cache = new ConcurrentHashMap<>();
 
-    public PropertiesSigningKeyProvider(SecurityTokenIssuerProperties properties) {
+    public PropertiesSigningKeyProvider(SecurityAuthProperties properties) {
         String activeKeyId = properties.getActiveKeyId();
         if (activeKeyId == null || activeKeyId.isBlank()) {
             throw new TokenIssuerException(

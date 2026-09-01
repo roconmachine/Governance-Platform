@@ -1,4 +1,4 @@
-package com.platform.security.issuer.model;
+package com.roconmachine.security.auth.model;
 
 /** Base type for every failure this module raises. Unchecked, same philosophy as the rest of this platform. */
 public class TokenIssuerException extends RuntimeException {
