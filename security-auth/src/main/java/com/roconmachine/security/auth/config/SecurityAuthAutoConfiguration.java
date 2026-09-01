@@ -22,20 +22,7 @@ import org.springframework.core.Ordered;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Opt-out by default, same pattern as every other module in this suite.
- *
- * Automatically selects the appropriate token validator based on configuration:
- * - AsymmetricJwtValidator: if jwks-uri or public-key-pem is configured
- * - JwtTokenValidator: if hmac-secret is configured (fallback)
- *
- * Filter ordering across the platform (lower runs first):
- *   governance-core CorrelationIdFilter        Ordered.HIGHEST_PRECEDENCE     (MIN_VALUE)
- *   security-auth JwtAuthenticationFilter       Ordered.HIGHEST_PRECEDENCE + 1 (this class)
- *   governance-http-logging HttpLoggingFilter   Ordered.HIGHEST_PRECEDENCE + 2
- * so correlation id exists before auth runs, and the resolved actor exists
- * in MDC before HTTP access logging captures it.
- */
+
 @AutoConfiguration
 @AutoConfigureAfter(GovernanceCoreAutoConfiguration.class)
 @EnableConfigurationProperties(SecurityAuthProperties.class)

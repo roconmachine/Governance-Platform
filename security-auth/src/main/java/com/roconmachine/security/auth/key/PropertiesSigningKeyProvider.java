@@ -9,13 +9,6 @@ import java.util.Base64;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Reads base64-encoded key material from {@code security.token-issuer.keys}.
- * The zero-infra default for local development and tests - NOT a
- * substitute for real key management (KMS/Vault) in any environment
- * handling real data. Replace this bean entirely (via
- * {@code @ConditionalOnMissingBean}) for that.
- */
 public class PropertiesSigningKeyProvider implements SigningKeyProvider {
 
     private final SecurityAuthProperties properties;

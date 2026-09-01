@@ -27,11 +27,10 @@ public class SecurityAuthInfoEndpoint {
         auth.put("clockSkewSeconds", properties.getClockSkewSeconds());
         auth.put("rejectInvalidToken", properties.isRejectInvalidToken());
         auth.put("hmacSecretConfigured", properties.getHmacSecret() != null && !properties.getHmacSecret().isBlank());
-        // deliberately never the secret itself, not even a fragment
 
         Map<String, Object> policy = new LinkedHashMap<>();
         policy.put("auth", auth);
-        policy.put("module", "security-auth:0.1.0-SNAPSHOT");
+        policy.put("module", "security-auth");
         return policy;
     }
 }
