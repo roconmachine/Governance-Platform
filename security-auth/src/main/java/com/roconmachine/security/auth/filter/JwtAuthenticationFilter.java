@@ -20,24 +20,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Extracts the bearer token, validates it, and - on success - populates
- * Spring Security's SecurityContext with an authenticated principal whose
- * authorities are the caller's roles (as {@code ROLE_<role>} - the
- * convention {@code hasRole()}/{@code @PreAuthorize("hasRole(...)")} and
- * governance-rbac's own role checks both expect).
- *
- * Also writes the resolved subject into governance-core's actor MDC key, so
- * governance-audit and governance-http-logging automatically record the
- * real authenticated caller - closing the loop with the rest of this
- * platform without those modules needing any Spring Security dependency of
- * their own (they just read whatever is in that MDC key, from whatever
- * source populated it).
- *
- * A MISSING token always proceeds unauthenticated - this filter never
- * blocks public endpoints. A PRESENT-but-invalid token's behavior is
- * governed by {@code security.auth.reject-invalid-token}.
- */
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final TokenValidator tokenValidator;
