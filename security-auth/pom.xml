@@ -13,7 +13,7 @@
 
     <groupId>com.roconmachine</groupId>
     <artifactId>security-auth</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>jar</packaging>
     <name>Security :: Auth</name>
     <description>
@@ -22,18 +22,6 @@
         and role-derived authorities - turning "every request must present a
         valid, unexpired token from our identity provider" into a Maven
         dependency instead of each service reimplementing JWT validation.
-
-        Unlike governance-audit/http-logging, this module depends on
-        spring-security-core/web directly and non-optionally: validating
-        tokens and populating a security context IS this module's entire
-        purpose, not an incidental integration to isolate behind a
-        conditional bean.
-
-        Also depends on governance-core so, once a request is authenticated,
-        the real caller identity is written into the same MDC key
-        governance-audit/http-logging read - closing the loop so audit
-        trails show actual authenticated users, not just whatever a gateway
-        header happened to say.
     </description>
 
     <properties>
