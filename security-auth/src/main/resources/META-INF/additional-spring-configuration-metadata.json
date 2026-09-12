@@ -1,0 +1,15 @@
+{
+  "groups": [
+    {
+      "name": "jwt.security",
+      "type": "com.roconmachine.securityauth.autoconfigure.JwtSecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jwt.security.secret",
+      "type": "java.lang.String",
+      "description": "Base64-encoded HMAC-SHA256 secret, >= 256 bits. Generate with: openssl rand -base64 32"
+    }
+  ]
+}

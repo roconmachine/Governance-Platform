@@ -1,0 +1,3 @@
+com.roconmachine.securityauth.autoconfigure.JwtSecurityAutoConfiguration
+com.roconmachine.securityauth.autoconfigure.JwtSecurityFilterChainAutoConfiguration
+com.roconmachine.securityauth.autoconfigure.RefreshTokenAutoConfiguration
