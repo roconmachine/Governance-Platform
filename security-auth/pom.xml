@@ -6,10 +6,10 @@
 
     <groupId>com.roconmachine</groupId>
     <artifactId>security-auth</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <packaging>jar</packaging>
 
-    <name>Security Auth Spring Boot Starter</name>
+    <name>Security Auth</name>
     <description>Reusable JWT authentication, session, and security starter for Spring Boot 3.3+</description>
 
     <properties>
@@ -33,7 +33,7 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Auto-configuration support (NOT spring-boot-starter, to keep this a library) -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -92,6 +92,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/roconmachine/Governance-Platform</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
