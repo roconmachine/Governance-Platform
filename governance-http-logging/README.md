@@ -12,7 +12,7 @@ section below.
 <dependency>
     <groupId>com.platform.governance</groupId>
     <artifactId>governance-http-logging</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
