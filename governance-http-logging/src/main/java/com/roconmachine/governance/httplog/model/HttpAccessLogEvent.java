@@ -59,20 +59,45 @@ public final class HttpAccessLogEvent {
 
     @Override
     public String toString() {
-        return "HttpAccessLogEvent{" +
-                "correlationId='" + correlationId + '\'' +
-                ", actor='" + actor + '\'' +
-                ", method='" + method + '\'' +
-                ", path='" + path + '\'' +
-                (queryString != null && !queryString.isEmpty() ? ", queryString='" + queryString + '\'' : "") +
-                (requestParameters != null && !requestParameters.isEmpty() ? ", requestParameters=" + requestParameters : "") +
-                ", status=" + status +
-                ", durationMillis=" + durationMillis +
-                ", requestHeaders=" + requestHeaders +
-                ", responseHeaders=" + responseHeaders +
-                (requestBody != null ? ", requestBody='" + requestBody + '\'' : "") +
-                (responseBody != null ? ", responseBody='" + responseBody + '\'' : "") +
-                ", timestamp=" + timestamp +
-                '}';
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("HttpAccessLogEvent{")
+            .append("correlationId='").append(correlationId).append('\'')
+            .append(", actor='").append(actor).append('\'')
+            .append(", timestamp=").append(timestamp)
+            .append(", durationMillis=").append(durationMillis)
+            .append("}\n\n");
+
+        // ---- request ----
+        sb.append("  req: {")
+            .append("method='").append(method).append('\'')
+            .append(", path='").append(path).append('\'');
+
+        if (queryString != null && !queryString.isEmpty()) {
+            sb.append(", queryString='").append(queryString).append('\'');
+        }
+
+        if (requestParameters != null && !requestParameters.isEmpty()) {
+            sb.append(", parameters=").append(requestParameters);
+        }
+
+        sb.append(", headers=").append(requestHeaders);
+        if (requestBody != null) {
+            sb.append(", body='").append(requestBody).append('\'');
+        }
+        sb.append("}\n\n");
+
+        // ---- response ----
+        sb.append("  response: {")
+            .append("status=").append(status)
+            .append(", headers=").append(responseHeaders);
+
+        if (responseBody != null) {
+            sb.append(", body='").append(responseBody).append('\'');
+        }
+
+        sb.append("}");
+
+        return sb.toString();
     }
 }
